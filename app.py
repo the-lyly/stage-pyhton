@@ -1,5 +1,5 @@
 import streamlit as st
-from sklearn.externals import joblib
+import joblib
 
 # Load the trained logistic regression model
 knn = joblib.load('MRknn_model.joblib')
