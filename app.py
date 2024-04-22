@@ -1,36 +1,29 @@
 import streamlit as st
 import joblib
 import numpy as np
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import classification_report, confusion_matrix
 
-# Load your trained KNN model
-knn = joblib.load('MRknn_model.joblib')
+# Load your trained model (adjust the path as necessary)
+model = joblib.load('knn_model.joblib')
 
-# Define the structure of your web app
-st.title('KNN Model Deployment for Fraud Detection')
-st.write('Please enter the required information to predict the fraud status:')
+# Title for the Streamlit app
+st.title('KNN Model Prediction for Business Partner ID')
 
-# Assuming 'feature' is the name of the feature used by your KNN model
-feature_input = st.number_input('Feature Input (Difference between ChAff and Total TVA annuelle)', value=0.0)
+# User input for BP
+bp_input = st.text_input('Enter Business Partner ID (BP):', '')
 
-# When 'Predict' is clicked, make a prediction and display it
+# Prediction button
 if st.button('Predict'):
-    # Note: Ensure that the input is in the same format as your model expects
-    prediction = knn.predict(np.array([[feature_input]]))
+    # The input needs to be converted to the same format the model was trained on
+    # Assuming the model expects a standardized or normalized BP value
+    # Here you should apply the same preprocessing as you did for your training data
+    # For the demonstration, we will convert the input to float and reshape for the model input
+    bp_value = np.array(float(bp_input)).reshape(1, -1)
     
-    # Convert prediction to meaningful output
-    if prediction == 0:
-        result = 'Bon (No Fraud Detected)'
-    elif prediction == 1:
-        result = 'Suspected Fraud'
-    elif prediction == 2:
-        result = 'Fraud Detected'
-    else:
-        result = 'Unknown Category'
+    # Make prediction
+    prediction = model.predict(bp_value)
     
-    st.write(f'The prediction is: {result}')
+    # Display the prediction
+    # You should map the numeric prediction back to the categorical label
+    # Assuming the mapping is {0: 'Class A', 1: 'Class B', 2: 'Class C'}
+    prediction_mapping = {0: 'Class A', 1: 'Class B', 2: 'Class C'}
+    st.write(f'The model prediction for BP {bp_input} is: {prediction_mapping[prediction[0]]}')
