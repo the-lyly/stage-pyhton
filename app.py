@@ -1,6 +1,12 @@
 import streamlit as st
 import joblib
 import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import classification_report, confusion_matrix
 
 # Load your trained KNN model
 knn = joblib.load('MRknn_model.joblib')
