@@ -25,5 +25,5 @@ if st.button('Predict'):
     # Display the prediction
     # You should map the numeric prediction back to the categorical label
     # Assuming the mapping is {0: 'Class A', 1: 'Class B', 2: 'Class C'}
-    prediction_mapping = {0: 'Class A', 1: 'Class B', 2: 'Class C'}
+    prediction_mapping = {0: 'Non fraude', 1: 'Fraude', 2: 'Cas Suspect'}
     st.write(f'The model prediction for BP {bp_input} is: {prediction_mapping[prediction[0]]}')
