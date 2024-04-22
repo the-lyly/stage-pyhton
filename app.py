@@ -3,7 +3,7 @@ import joblib
 import numpy as np
 
 # Load your trained model (adjust the path as necessary)
-model = joblib.load('knn_model.joblib')
+model = joblib.load('MRknn_model.joblib')
 
 # Title for the Streamlit app
 st.title('KNN Model Prediction for Business Partner ID')
