@@ -37,10 +37,13 @@ if bp_input:
 
 # Display a sorted table of specified columns
 st.subheader('données detaillés classées par feature (diff enfte ChAff et TVA annuelle)')
-# Sorting the DataFrame by 'featureChT' in descending order
-sorted_df = df.sort_values(by='featureChT', ascending=False)
+# Calculate the absolute value of 'featureChT' and add it as a new column
+df['Abs FeatureChT'] = df['featureChT'].abs()
+# Sorting the DataFrame by 'Abs FeatureChT' in descending order
+sorted_df = df.sort_values(by='Abs FeatureChT', ascending=False)
 # Displaying specific columns
-st.dataframe(sorted_df[['BP', 'Wilaya', 'Code CNRC', 'Code ONS', 'ChAff', 'Total TVA anuelle', 'cible','featureChT']])
+st.dataframe(sorted_df[['BP', 'Wilaya', 'Code CNRC', 'Code ONS', 'ChAff', 'Total TVA anuelle', 'cible','featureChT', 'Abs FeatureChT']])
+
 
 # Interactive graph of Fraud Percentage by Wilaya
 st.subheader('pourcentage de fraude par Wilaya')
