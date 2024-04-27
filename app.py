@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 # Function to load the dataset
-@st.cache
+@st.cache_data
 def load_data():
     return pd.read_excel('graphesdf.xlsx')
 
