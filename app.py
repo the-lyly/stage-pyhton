@@ -36,7 +36,7 @@ if bp_input:
         st.error("veuillez entrer un BP valide")
 
 # Display a sorted table of specified columns
-st.subheader('données detaillés classées par feature (diff enfte ChAff et TVA annuelle)')
+st.subheader('données detaillés classées par feature (diff entre ChAff et TVA annuelle)')
 # Calculate the absolute value of 'featureChT' and add it as a new column
 df['Abs FeatureChT'] = df['featureChT'].abs()
 # Sorting the DataFrame by 'Abs FeatureChT' in descending order
